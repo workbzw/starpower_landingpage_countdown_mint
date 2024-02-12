@@ -2,7 +2,7 @@ import * as React from 'react';
 import AspectRatio from '@mui/joy/AspectRatio';
 import Box from '@mui/joy/Box';
 import Container from '@mui/joy/Container';
-import { typographyClasses } from '@mui/joy/Typography';
+import {typographyClasses} from '@mui/joy/Typography';
 
 export default function TwoSidedLayout({
                                            children,
@@ -10,6 +10,7 @@ export default function TwoSidedLayout({
                                        }: React.PropsWithChildren<{ reversed?: boolean }>) {
     return (
         <Container
+
             sx={(theme) => ({
                 position: 'relative',
                 minHeight: '100vh',
@@ -17,7 +18,7 @@ export default function TwoSidedLayout({
                 flexDirection: reversed ? 'column-reverse' : 'column',
                 alignItems: 'center',
                 py: 5,//顶部、底部空白
-                gap: 4,
+                gap: 1,
                 [theme.breakpoints.up(834)]: {
                     flexDirection: 'row',
                     gap: 6,
