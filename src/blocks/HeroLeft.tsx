@@ -4,14 +4,16 @@ import Typography from '@mui/joy/Typography';
 import Card from '@mui/joy/Card';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import TwoSidedLayout from '../components/TwoSidedLayout';
-import {Task} from "@mui/icons-material";
+import {Diamond, Task, Verified} from "@mui/icons-material";
 import {Stack} from "@mui/joy";
 import {useColorScheme} from "@mui/joy/styles";
 import SvgIcon from '@mui/material/SvgIcon';
 import {useState} from "react";
+import Box from "@mui/joy/Box";
 
-const twitterUrl = "https://www.baidu.com";
-const discordUrl = "https://www.google.com";
+const twitterUrl = "https://twitter.com/starpowerworld";
+const discordUrl = "https://discord.com/invite/Mn36SgcWkw";
+const telegramUrl = "https://t.me/starpowernetwork";
 
 const startDateStr = '2024/2/19 00:00:00';
 
@@ -43,7 +45,7 @@ export default function HeroLeft() {
         setS(parseInt((time / 1000 % 60).toString()));
     }
 
-    let timeout = setTimeout(() => {
+    setTimeout(() => {
         countDown();
         // clearTimeout(timeout);
     }, 1000);
@@ -60,6 +62,12 @@ export default function HeroLeft() {
     }
     const handleClickDiscord = () => {
         window.open(discordUrl);
+    }
+    const handleClickTelegram = () => {
+        window.open(telegramUrl);
+    }
+    const handleClickMint = () => {
+        window.location.href = telegramUrl;
     }
     return (
         <TwoSidedLayout>
@@ -120,6 +128,19 @@ export default function HeroLeft() {
                             d="M1049.062 139.672a3 3 0 0 0-1.528-1.4A970.13 970.13 0 0 0 808.162 64.06a3.632 3.632 0 0 0-3.846 1.82 674.922 674.922 0 0 0-29.8 61.2 895.696 895.696 0 0 0-268.852 0 619.082 619.082 0 0 0-30.27-61.2 3.78 3.78 0 0 0-3.848-1.82 967.378 967.378 0 0 0-239.376 74.214 3.424 3.424 0 0 0-1.576 1.352C78.136 367.302 36.372 589.38 56.86 808.708a4.032 4.032 0 0 0 1.53 2.75 975.332 975.332 0 0 0 293.65 148.378 3.8 3.8 0 0 0 4.126-1.352A696.4 696.4 0 0 0 416.24 860.8a3.72 3.72 0 0 0-2.038-5.176 642.346 642.346 0 0 1-91.736-43.706 3.77 3.77 0 0 1-0.37-6.252 502.094 502.094 0 0 0 18.218-14.274 3.638 3.638 0 0 1 3.8-0.512c192.458 87.834 400.82 87.834 591 0a3.624 3.624 0 0 1 3.848 0.466 469.066 469.066 0 0 0 18.264 14.32 3.768 3.768 0 0 1-0.324 6.252 602.814 602.814 0 0 1-91.78 43.66 3.75 3.75 0 0 0-2 5.222 782.11 782.11 0 0 0 60.028 97.63 3.728 3.728 0 0 0 4.126 1.4A972.096 972.096 0 0 0 1221.4 811.458a3.764 3.764 0 0 0 1.53-2.704c24.528-253.566-41.064-473.824-173.868-669.082zM444.982 675.16c-57.944 0-105.688-53.174-105.688-118.478s46.818-118.482 105.688-118.482c59.33 0 106.612 53.64 105.686 118.478 0 65.308-46.82 118.482-105.686 118.482z m390.76 0c-57.942 0-105.686-53.174-105.686-118.478s46.818-118.482 105.686-118.482c59.334 0 106.614 53.64 105.688 118.478 0 65.308-46.354 118.482-105.688 118.482z"/>
                     </svg>
                 </SvgIcon>
+                <SvgIcon color={'secondary'} onClick={handleClickTelegram}>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="46"
+                        height="46"
+                        fill="currentColor"
+                        className="bi bi-google"
+                        viewBox="0 0 1024 1024"
+                    >
+                        <path
+                            d="M417.28 795.733333 429.226667 615.253333 756.906667 320C771.413333 306.773333 753.92 300.373333 734.72 311.893333L330.24 567.466667 155.306667 512C117.76 501.333333 117.333333 475.306667 163.84 456.533333L845.226667 193.706667C876.373333 179.626667 906.24 201.386667 894.293333 249.173333L778.24 795.733333C770.133333 834.56 746.666667 843.946667 714.24 826.026667L537.6 695.466667 452.693333 777.813333C442.88 787.626667 434.773333 795.733333 417.28 795.733333Z"/>
+                    </svg>
+                </SvgIcon>
             </Stack>
             <Card
                 variant="outlined"
@@ -127,18 +148,21 @@ export default function HeroLeft() {
                 orientation="horizontal"
                 sx={{gap: 2, my: 1, textAlign: 'left', width: 1}}
             >
-                <Task color="success" fontSize="large"/>
+                <Diamond color="warning" fontSize="large"/>
                 <div>
+
                     <Typography fontSize="xl" fontWeight="lg" sx={{mb: 1}}>
-                        WHITELIST
+                        OG WL
                     </Typography>
-                    <Typography level="body-sm" color={"primary"}>
+                    <Typography alignItems={'right'} level="body-sm" color={"primary"}>
                         FREE MINT + 100 NOVA
                     </Typography>
                 </div>
-                <Typography color={"primary"} fontSize="l" fontWeight="lg" sx={{mb: 1}}>
-                    {"start in " + d + "d " + h + "h " + m + "m " + s + "s"}
-                </Typography>
+                <Box width={1} display="flex" justifyContent="flex-end">
+                    <Typography color={"primary"} fontSize="l" fontWeight="lg" sx={{mb: 1}}>
+                        {"start in " + d + "d " + h + "h " + m + "m " + s + "s"}
+                    </Typography>
+                </Box>
             </Card>
             <Card
                 variant="outlined"
@@ -146,20 +170,43 @@ export default function HeroLeft() {
                 orientation="horizontal"
                 sx={{gap: 2, my: 1, textAlign: 'left', width: 1}}
             >
-                <AutoAwesomeIcon color="success" fontSize="large"/>
+                <Verified color="success" fontSize="large"/>
+                <div>
+                    <Typography fontSize="xl" fontWeight="lg" sx={{mb: 1}}>
+                        VIP WL
+                    </Typography>
+                    <Typography level="body-sm" color={"primary"}>
+                        FREE MINT + 50 NOVA
+                    </Typography>
+                </div>
+                <Box width={1} display="flex" justifyContent="flex-end">
+                    <Typography color={"primary"} fontSize="l" fontWeight="lg" sx={{mb: 1}}>
+                        {"start in " + d + "d " + h + "h " + m + "m " + s + "s"}
+                    </Typography>
+                </Box>
+            </Card>
+            <Card
+                variant="outlined"
+                color="neutral"
+                orientation="horizontal"
+                sx={{gap: 2, my: 1, textAlign: 'left', width: 1}}
+            >
+                <AutoAwesomeIcon color="inherit" fontSize="large"/>
                 <div>
                     <Typography fontSize="xl" fontWeight="lg" sx={{mb: 1}}>
                         PUBLIC MINT
                     </Typography>
                     <Typography level="body-sm" color={"primary"}>
-                        FREE MINT + 5 0 NOVA
+                        FREE MINT
                     </Typography>
                 </div>
-                <Typography color={"primary"} fontSize="l" fontWeight="lg" sx={{mb: 1}}>
-                    {"start in " + d + "d " + h + "h " + m + "m " + s + "s"}
-                </Typography>
+                <Box width={1} display="flex" justifyContent="flex-end">
+                    <Typography color={"primary"} fontSize="l" fontWeight="lg" sx={{mb: 1}}>
+                        {"start in " + d + "d " + h + "h " + m + "m " + s + "s"}
+                    </Typography>
+                </Box>
             </Card>
-            <Button size="lg" color={'primary'}>MINT PIONEER PASS</Button>
+            <Button onClick={handleClickMint} size="lg" color={'primary'}>MINT PIONEER PASS</Button>
         </TwoSidedLayout>
     );
 }
