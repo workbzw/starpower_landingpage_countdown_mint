@@ -13,7 +13,7 @@ import {useState} from "react";
 const twitterUrl = "https://www.baidu.com";
 const discordUrl = "https://www.google.com";
 
-const startDateStr = '2024-2-19 00:00:00';
+const startDateStr = '2024/2/19 00:00:00';
 
 function getTimeNow() {
     let d1 = new Date();
