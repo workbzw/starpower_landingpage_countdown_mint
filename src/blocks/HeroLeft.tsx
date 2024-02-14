@@ -206,7 +206,7 @@ export default function HeroLeft() {
                     </Typography>
                 </Box>
             </Card>
-            <Button onClick={handleClickMint} size="lg" color={'primary'}>MINT PIONEER PASS</Button>
+            {/*<Button onClick={handleClickMint} size="lg" color={'primary'}>MINT PIONEER PASS</Button>*/}
         </TwoSidedLayout>
     );
 }
