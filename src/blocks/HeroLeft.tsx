@@ -4,8 +4,8 @@ import Typography from '@mui/joy/Typography';
 import Card from '@mui/joy/Card';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import TwoSidedLayout from '../components/TwoSidedLayout';
-import {Diamond, Task, Verified} from "@mui/icons-material";
-import {Stack} from "@mui/joy";
+import {Diamond, HomeOutlined, Task, Verified} from "@mui/icons-material";
+import {Alert, Modal, ModalClose, ModalDialog, Sheet, Stack} from "@mui/joy";
 import {useColorScheme} from "@mui/joy/styles";
 import SvgIcon from '@mui/material/SvgIcon';
 import {useState} from "react";
@@ -31,18 +31,23 @@ function getUTCTimeFromStr(str: string) {
 export default function HeroLeft() {
     let timeNow = getUTCTimeFromStr(startDateStr) - getTimeNow();
     const [time, setTime] = useState(timeNow)
-    const [d, setD] = useState(parseInt((time / 1000 / 60 / 60 / 24).toString()));
-    const [h, setH] = useState(parseInt((time / 1000 / 60 / 60 % 24).toString()));
-    const [m, setM] = useState(parseInt((time / 1000 / 60 % 60).toString()));
-    const [s, setS] = useState(parseInt((time / 1000 % 60).toString()));
+    const [d, setD] = useState(parseInt((time / 1000 / 60 / 60 / 24).toString()).toString());
+    const [h, setH] = useState(parseInt((time / 1000 / 60 / 60 % 24).toString()).toString());
+    const [m, setM] = useState(parseInt((time / 1000 / 60 % 60).toString()).toString());
+    const [s, setS] = useState(parseInt((time / 1000 % 60).toString()).toString());
 
     const countDown = () => {
         timeNow = getUTCTimeFromStr(startDateStr) - getTimeNow();
         setTime(timeNow);
-        setD(parseInt((time / 1000 / 60 / 60 / 24).toString()));
-        setH(parseInt((time / 1000 / 60 / 60 % 24).toString()));
-        setM(parseInt((time / 1000 / 60 % 60).toString()));
-        setS(parseInt((time / 1000 % 60).toString()));
+        // setD(parseInt((time / 1000 / 60 / 60 / 24).toString()).toString());
+        // setH(parseInt((time / 1000 / 60 / 60 % 24).toString()).toString());
+        // setM(parseInt((time / 1000 / 60 % 60).toString()).toString());
+        // setS(parseInt((time / 1000 % 60).toString()).toString());
+
+        setD('?');
+        setH('?');
+        setM('?');
+        setS('?');
     }
 
     setTimeout(() => {
@@ -67,8 +72,12 @@ export default function HeroLeft() {
         window.open(telegramUrl);
     }
     const handleClickMint = () => {
-        window.location.href = telegramUrl;
+        // window.location.href = telegramUrl;
+        // alert("Coming soon!!!");
+        setOpenWin(true);
+
     }
+    const [openWin, setOpenWin] = useState(false);
     return (
         <TwoSidedLayout>
             <Stack direction="row" alignItems={'center'} spacing={2}>
@@ -78,6 +87,38 @@ export default function HeroLeft() {
                     src={url}
                     alt=""
                 />
+                <Modal
+                    aria-labelledby="modal-title"
+                    aria-describedby="modal-desc"
+                    open={openWin}
+                    onClose={() => setOpenWin(false)}
+                    sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                >
+                    <Sheet
+                        variant="outlined"
+                        sx={{
+                            maxWidth: 500,
+                            borderRadius: 'md',
+                            p: 3,
+                            boxShadow: 'lg',
+                        }}
+                    >
+                        {/*<ModalClose variant="plain" sx={{ m: 1 }} />*/}
+                        <Typography
+                            component="h2"
+                            id="modal-title"
+                            level="h4"
+                            textColor="inherit"
+                            fontWeight="lg"
+                            mb={1}
+                        >
+
+                        </Typography>
+                        <Typography id="modal-desc" textColor="text.tertiary">
+                            Coming soon!
+                        </Typography>
+                    </Sheet>
+                </Modal>
                 <Typography
                     level="h1"
                     fontWeight="xl"
@@ -96,7 +137,8 @@ export default function HeroLeft() {
                     TOTAL SUPPLY : <Typography textColor="gold">10000</Typography>
                 </Typography>
             </Card>
-            <Typography fontSize="lg" textColor="text.secondary" lineHeight="lg" sx={{fontWeight: 'light'}}>
+            <Typography fontFamily={'Arial'} fontSize="lg" textColor="text.secondary" lineHeight="lg"
+                        sx={{fontWeight: 'light'}}>
                 Starpower is committed to building the Web3 version of Tesla's global energy network, enabling virtual
                 power plants and other applications by linking energy equipment.
                 Miner FREE MINT Festival February 19, 2024.
@@ -206,7 +248,7 @@ export default function HeroLeft() {
                     </Typography>
                 </Box>
             </Card>
-            {/*<Button onClick={handleClickMint} size="lg" color={'primary'}>MINT PIONEER PASS</Button>*/}
+            <Button onClick={handleClickMint} size="lg" color={'primary'}>MINT PIONEER PASS</Button>
         </TwoSidedLayout>
     );
 }
