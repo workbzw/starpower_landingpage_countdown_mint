@@ -52,7 +52,7 @@ const HomePage = () => {
             <ColorSchemeToggle/>
             <Box
                 sx={{
-                    backgroundImage: "url('https://s1.imagehub.cc/images/2024/02/12/9c1246e49298cc34aa0a7ac9134808bd.png')",
+                    // backgroundImage: "url('https://s1.imagehub.cc/images/2024/02/12/9c1246e49298cc34aa0a7ac9134808bd.png')",
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     height: '100vh',
